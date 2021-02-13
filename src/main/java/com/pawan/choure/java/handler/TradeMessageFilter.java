@@ -1,10 +1,10 @@
-package com.pawan.choure.handler;
+package com.pawan.choure.java.handler;
 
 import org.springframework.integration.MessageRejectedException;
 import org.springframework.integration.core.MessageSelector;
 import org.springframework.messaging.Message;
 
-public class TradeMessageFilterJava implements MessageSelector {
+public class TradeMessageFilter implements MessageSelector {
     @Override
     public boolean accept(Message<?> message) {
         Object payload =message.getPayload();

@@ -1,9 +1,9 @@
-package com.pawan.choure.controller
+package com.pawan.choure.kotlin.controller
 
 
-import com.pawan.choure.handler.TradeHandler
-import com.pawan.choure.handler.TradeHandlerSimple
-import com.pawan.choure.mapper.TradeMapper
+import com.pawan.choure.kotlin.handler.TradeHandler
+import com.pawan.choure.kotlin.handler.TradeHandlerSimple
+import com.pawan.choure.kotlin.mapper.TradeMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.integration.channel.PublishSubscribeChannel
 import org.springframework.integration.channel.QueueChannel

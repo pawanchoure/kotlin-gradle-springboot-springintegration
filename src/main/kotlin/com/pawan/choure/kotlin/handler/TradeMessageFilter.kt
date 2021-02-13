@@ -1,4 +1,4 @@
-package com.pawan.choure.handler
+package com.pawan.choure.kotlin.handler
 
 import org.springframework.integration.MessageRejectedException
 import org.springframework.integration.core.MessageSelector

@@ -1,4 +1,4 @@
-package com.pawan.choure.config
+package com.pawan.choure.kotlin.config
 
 import org.apache.ibatis.session.SqlSessionFactory
 import org.mybatis.spring.SqlSessionFactoryBean
@@ -12,7 +12,7 @@ import kotlin.jvm.Throws
 
 
 @Configuration
-@MapperScan("com.pawan.choure.mapper")
+@MapperScan("com.pawan.choure.kotlin.mapper")
 class PersistenceConfig {
 
     @Bean

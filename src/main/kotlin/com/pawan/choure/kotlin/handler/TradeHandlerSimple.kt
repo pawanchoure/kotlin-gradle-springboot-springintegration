@@ -1,4 +1,4 @@
-package com.pawan.choure.handler
+package com.pawan.choure.kotlin.handler
 
 import org.springframework.messaging.Message
 import org.springframework.messaging.MessageHandler

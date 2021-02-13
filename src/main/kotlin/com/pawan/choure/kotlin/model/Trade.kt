@@ -1,4 +1,4 @@
-package com.pawan.choure.model
+package com.pawan.choure.kotlin.model
 
 import java.util.*
 

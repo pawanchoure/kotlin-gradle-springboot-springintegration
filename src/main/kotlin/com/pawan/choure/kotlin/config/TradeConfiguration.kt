@@ -1,6 +1,6 @@
-package com.pawan.choure.config
+package com.pawan.choure.kotlin.config
 
-import com.pawan.choure.handler.TradeHandler
+import com.pawan.choure.kotlin.handler.TradeHandler
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.integration.MessageRejectedException
@@ -16,7 +16,7 @@ import org.springframework.messaging.MessagingException
 import org.springframework.messaging.SubscribableChannel
 
 @Configuration
-class TradeConfigurationKotlin {
+class TradeConfiguration {
 
     //SubscribableChannel Direct Channel
     @Bean("inputChannelTrade")
@@ -60,4 +60,6 @@ class TradeConfigurationKotlin {
         val payload = message!!.payload
         return payload is String
     }
+
+    //Gateway
 }

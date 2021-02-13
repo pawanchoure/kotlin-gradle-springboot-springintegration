@@ -1,7 +1,7 @@
-package com.pawan.choure
+package com.pawan.choure.kotlin
 
-import com.pawan.choure.handler.TradeHandler
-import com.pawan.choure.handler.TradeHandlerSimple
+import com.pawan.choure.kotlin.handler.TradeHandler
+import com.pawan.choure.kotlin.handler.TradeHandlerSimple
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
