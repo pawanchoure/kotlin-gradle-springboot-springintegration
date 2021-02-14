@@ -93,4 +93,18 @@ public class Trade {
     public int hashCode() {
         return trade_id != null ? trade_id.hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+        return "Trade{" +
+                "trade_id='" + trade_id + '\'' +
+                ", type='" + type + '\'' +
+                ", sub_type='" + sub_type + '\'' +
+                ", pnl_spn=" + pnl_spn +
+                ", spn=" + spn +
+                ", quantity=" + quantity +
+                ", trade_date=" + trade_date +
+                ", price=" + price +
+                '}';
+    }
 }
