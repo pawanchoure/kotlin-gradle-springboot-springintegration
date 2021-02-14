@@ -7,10 +7,11 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.channel.QueueChannel;
-import org.springframework.messaging.SubscribableChannel;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHandler;
-import org.springframework.messaging.MessagingException;
+import org.springframework.integration.dsl.IntegrationFlow;
+import org.springframework.integration.dsl.IntegrationFlows;
+import org.springframework.integration.dsl.MessageChannels;
+import org.springframework.integration.transformer.ObjectToStringTransformer;
+import org.springframework.messaging.*;
 
 @Configuration
 public class TradeConfiguration {
@@ -60,5 +61,6 @@ public class TradeConfiguration {
         Object payload = message.getPayload();
         return payload instanceof String;
     }
+
 
 }

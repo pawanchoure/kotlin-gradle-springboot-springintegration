@@ -5,9 +5,16 @@ import com.pawan.choure.java.handler.TradeHandlerSimple;
 import com.pawan.choure.java.mapper.TradeMapper;
 import com.pawan.choure.java.model.Trade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.dsl.IntegrationFlow;
+import org.springframework.integration.dsl.IntegrationFlows;
+import org.springframework.integration.dsl.MessageChannels;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.messaging.support.MessageBuilder;
@@ -49,11 +56,13 @@ public class TradeController {
       return tradeMapper.findByTradeId(tradeId);
     }
     @GetMapping(value = "/directPubSub")
-    public void pubSub(@RequestParam(name = "name", defaultValue = "World") String name) {
+    public void directPubSub(@RequestParam(name = "name", defaultValue = "World") String name) {
         inputChannelTrade.send(MessageBuilder.withPayload(name).build());
         inputChannelTradeSimple.send(MessageBuilder.withPayload(name).build());
        inputChannelTradeActivator.send(MessageBuilder.withPayload(name).build());
     }
+
+
 
     @GetMapping({"/filter"})
     public void filter(@RequestParam(value = "name",defaultValue = "World")  String name) {
@@ -95,5 +104,8 @@ public class TradeController {
             System.out.println("TradeHandlerSimple PayLoad Hello "+payload);
         }
     }
+
+
+
 
 }
