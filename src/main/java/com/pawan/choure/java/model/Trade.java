@@ -1,5 +1,6 @@
 package com.pawan.choure.java.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -12,8 +13,19 @@ public class Trade {
     Integer pnl_spn;
     Integer spn;
     Integer quantity;
-    Date trade_date;
+    LocalDate trade_date;
     Double price;
+
+    public Trade(String tradeId, String type, String sub_type, int pnl_spn, int spn, LocalDate trade_date, double price, int quantity) {
+            this.trade_id=tradeId;
+        this.type=type;
+        this.sub_type=sub_type;
+        this.pnl_spn=pnl_spn;
+        this.spn=spn;
+        this.trade_date=trade_date;
+        this.price=price;
+        this.quantity=quantity;
+    }
 
     public String getTrade_id() {
         return trade_id;
@@ -63,11 +75,11 @@ public class Trade {
         this.quantity = quantity;
     }
 
-    public Date getTrade_date() {
+    public LocalDate getTrade_date() {
         return trade_date;
     }
 
-    public void setTrade_date(Date trade_date) {
+    public void setTrade_date(LocalDate trade_date) {
         this.trade_date = trade_date;
     }
 

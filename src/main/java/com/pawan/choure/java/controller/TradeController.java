@@ -5,22 +5,14 @@ import com.pawan.choure.java.handler.TradeHandlerSimple;
 import com.pawan.choure.java.mapper.TradeMapper;
 import com.pawan.choure.java.model.Trade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
-import org.springframework.integration.dsl.IntegrationFlow;
-import org.springframework.integration.dsl.IntegrationFlows;
-import org.springframework.integration.dsl.MessageChannels;
-import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,7 +40,7 @@ public class TradeController {
     private SubscribableChannel inputChannelTradeActivator;
 
     @Autowired
-    private  PublishSubscribeChannel tradeProcessorChannel;
+    private PublishSubscribeChannel tradeProcessorChannel;
 
     @Autowired
     private QueueChannel tradeProcessorQueue;
@@ -63,9 +55,10 @@ public class TradeController {
     private DirectChannel tradeDirectChannel;
 
     @GetMapping("/trade")
-    public Trade trade(@RequestParam(value = "tradeId",defaultValue = "TE123")  String tradeId) {
-      return tradeMapper.findByTradeId(tradeId);
+    public Trade trade(@RequestParam(value = "tradeId", defaultValue = "TE123") String tradeId) {
+        return tradeMapper.findByTradeId(tradeId);
     }
+
     @GetMapping(value = "/directPubSub")
     public void directPubSub(@RequestParam(name = "name", defaultValue = "World") String name) {
         inputChannelTrade.send(MessageBuilder.withPayload(name).build());
@@ -74,9 +67,8 @@ public class TradeController {
     }
 
 
-
     @GetMapping("/filter")
-    public void filter(@RequestParam(value = "name",defaultValue = "World")  String name) {
+    public void filter(@RequestParam(value = "name", defaultValue = "World") String name) {
         tradeProcessorChannel.send(MessageBuilder.withPayload(name).build());
         tradeProcessorChannel.send(MessageBuilder.withPayload(name).build());
         tradeProcessorChannel.send(MessageBuilder.withPayload(1).build());
@@ -91,6 +83,7 @@ public class TradeController {
         this.start();
 
     }
+
     private void start() {
         timer.schedule(new TimerTask() {
             public void run() {
@@ -130,7 +123,7 @@ public class TradeController {
     private static class ViewMessageHandler extends TradeHandlerSimple {
         @Override
         protected void receiveAndAcknowledge(Object payload) {
-            System.out.println("TradeHandlerSimple PayLoad Hello "+payload);
+            System.out.println("TradeHandlerSimple PayLoad Hello " + payload);
         }
     }
 
@@ -138,13 +131,11 @@ public class TradeController {
     //POC
     @GetMapping("/publishTrades")
     public void publishTrades() {
-        List<Trade> tradeList=tradeMapper.getAllTrades();
-        Trade tradeSingle= new Trade();
-        for(Trade trade: tradeList){
+        List<Trade> tradeList = tradeMapper.getAllTrades();
+        for (Trade trade : tradeList) {
             tradeDirectChannel.send(MessageBuilder.withPayload(trade).build());
         }
     }
-
 
 
 }
