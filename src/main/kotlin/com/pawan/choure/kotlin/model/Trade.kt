@@ -2,7 +2,7 @@ package com.pawan.choure.kotlin.model
 
 import java.util.*
 
-data class Trade(
+data class Trade (
     var type:   String? = null,
     var sub_type:   String? = null,
     var trade_id:   String? = null,

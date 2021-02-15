@@ -19,7 +19,7 @@ public class TradeConfigurationDSL {
     }
 
     @Bean
-    public TradeHandler tradeHandler(){
+    public TradeHandler tradeHandlerDSL(){
         return new TradeHandler();
     }
     @Bean
@@ -27,7 +27,7 @@ public class TradeConfigurationDSL {
         return IntegrationFlows.from("inputChannelTradeDSL")
                 .filter("World"::equals)
                 .transform("Hello "::concat)
-                .handle("tradeHandler","handleMessage")
+                .handle("tradeHandlerDSL","handleMessage")
                 //handle("TradeHandler","handleMessage")  // You can uncomment this for using a handler. If so, comment out the .handle(System.out::println) statement.
                 //.handle(System.out::println)
                 .get();

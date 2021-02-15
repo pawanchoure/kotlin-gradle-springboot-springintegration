@@ -62,7 +62,7 @@ public class TradeController {
     @Autowired
     private DirectChannel tradeDirectChannel;
 
-    @GetMapping({"/trade"})
+    @GetMapping("/trade")
     public Trade trade(@RequestParam(value = "tradeId",defaultValue = "TE123")  String tradeId) {
       return tradeMapper.findByTradeId(tradeId);
     }
@@ -75,7 +75,7 @@ public class TradeController {
 
 
 
-    @GetMapping({"/filter"})
+    @GetMapping("/filter")
     public void filter(@RequestParam(value = "name",defaultValue = "World")  String name) {
         tradeProcessorChannel.send(MessageBuilder.withPayload(name).build());
         tradeProcessorChannel.send(MessageBuilder.withPayload(name).build());
@@ -136,9 +136,10 @@ public class TradeController {
 
 
     //POC
-    @GetMapping({"/publishTrades"})
+    @GetMapping("/publishTrades")
     public void publishTrades() {
         List<Trade> tradeList=tradeMapper.getAllTrades();
+        Trade tradeSingle= new Trade();
         for(Trade trade: tradeList){
             tradeDirectChannel.send(MessageBuilder.withPayload(trade).build());
         }
