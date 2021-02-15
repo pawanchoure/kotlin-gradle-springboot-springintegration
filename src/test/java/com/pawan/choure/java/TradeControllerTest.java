@@ -48,7 +48,7 @@ public class TradeControllerTest {
         JSONAssert.assertEquals(expected, result.getResponse()
                 .getContentAsString(), false);
     }
-    
+
 }
 
 
