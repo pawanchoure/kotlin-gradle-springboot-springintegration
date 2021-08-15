@@ -32,8 +32,8 @@ public class TradeControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    Trade trade = new Trade("TE123", "Equity", "Common Stock", 123, 1234, LocalDate.of(2021, 2, 15), 10.18, 10);
-
+    //Trade trade = new Trade("TE123", "Equity", "Common Stock", 123, 1234, LocalDate.of(2021, 2, 15), 10.18, 10);
+    Trade trade = new Trade();
     @Test
     public void trade() throws Exception {
         Mockito.when(tradeController.trade(Mockito.anyString())).thenReturn(trade);

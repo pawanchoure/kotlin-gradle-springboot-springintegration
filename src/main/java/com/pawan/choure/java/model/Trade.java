@@ -16,7 +16,7 @@ public class Trade {
     LocalDate trade_date;
     Double price;
 
-    public Trade(String tradeId, String type, String sub_type, int pnl_spn, int spn, LocalDate trade_date, double price, int quantity) {
+/*    public Trade(String tradeId, String type, String sub_type, int pnl_spn, int spn, LocalDate trade_date, double price, int quantity) {
             this.trade_id=tradeId;
         this.type=type;
         this.sub_type=sub_type;
@@ -25,7 +25,7 @@ public class Trade {
         this.trade_date=trade_date;
         this.price=price;
         this.quantity=quantity;
-    }
+    }*/
 
     public String getTrade_id() {
         return trade_id;
